@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trabajo en equipo - Soporte Técnico 8.º año</title>
+<style>
+  :root{
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --text:#1f2937;
+    --muted:#5b6472;
+    --primary:#123b63;
+    --secondary:#e8f1f8;
+    --accent:#dbeafe;
+    --border:#d7dee8;
+    --ok:#eaf7ee;
+    --warn:#fff6db;
+    --danger:#fdecec;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+  }
+  header{
+    background:var(--primary);
+    color:white;
+    padding:38px 20px;
+  }
+  header .wrap, main, footer .wrap{
+    max-width:1050px;
+    margin:auto;
+  }
+  h1{margin:0 0 8px;font-size:2rem}
+  h2{
+    color:var(--primary);
+    margin-top:0;
+    border-bottom:3px solid var(--secondary);
+    padding-bottom:8px;
+  }
+  h3{color:#244f77;margin-top:24px}
+  p{margin:10px 0}
+  .subtitle{opacity:.95;margin:0}
+  nav{
+    background:white;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:5;
+  }
+  nav .wrap{
+    max-width:1050px;
+    margin:auto;
+    padding:10px 16px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  nav a{
+    color:var(--primary);
+    text-decoration:none;
+    font-weight:bold;
+    font-size:.92rem;
+    padding:6px 10px;
+    border-radius:8px;
+    background:#eef4f9;
+  }
+  main{padding:24px 16px 45px}
+  section{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:24px;
+    margin-bottom:22px;
+  }
+  .idea{
+    background:var(--accent);
+    border-left:5px solid #3b82f6;
+    padding:14px 16px;
+    border-radius:8px;
+    margin:16px 0;
+  }
+  .example{
+    background:var(--ok);
+    border-left:5px solid #2f855a;
+    padding:14px 16px;
+    border-radius:8px;
+    margin:16px 0;
+  }
+  .warning{
+    background:var(--warn);
+    border-left:5px solid #d69e2e;
+    padding:14px 16px;
+    border-radius:8px;
+    margin:16px 0;
+  }
+  .important{
+    background:var(--danger);
+    border-left:5px solid #c53030;
+    padding:14px 16px;
+    border-radius:8px;
+    margin:16px 0;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    background:white;
+  }
+  th,td{
+    border:1px solid var(--border);
+    padding:10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    background:#eaf0f6;
+    color:#173d61;
+  }
+  ul,ol{padding-left:24px}
+  li{margin:6px 0}
+  .steps{
+    counter-reset:step;
+    list-style:none;
+    padding-left:0;
+  }
+  .steps li{
+    counter-increment:step;
+    padding:12px 14px 12px 48px;
+    background:#f8fafc;
+    border:1px solid var(--border);
+    border-radius:9px;
+    margin:10px 0;
+    position:relative;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:12px;
+    top:10px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    text-align:center;
+    line-height:26px;
+    font-weight:bold;
+  }
+  details{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 14px;
+    margin:10px 0;
+    background:#fbfdff;
+  }
+  summary{
+    font-weight:bold;
+    cursor:pointer;
+    color:var(--primary);
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
+  }
+  .mini{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px;
+    background:#fbfcfe;
+  }
+  .tag{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:999px;
+    background:#e8f1f8;
+    color:#234e70;
+    font-size:.85rem;
+    font-weight:bold;
+    margin-bottom:8px;
+  }
+  .question{
+    background:#f7f9fc;
+    border:1px solid var(--border);
+    padding:14px;
+    border-radius:9px;
+    margin:10px 0;
+  }
+  .footer-note{
+    color:var(--muted);
+    font-size:.9rem;
+  }
+  @media (max-width:700px){
+    h1{font-size:1.55rem}
+    section{padding:18px}
+    table{font-size:.92rem}
+  }
+  @media print{
+    nav{display:none}
+    body{background:white}
+    section{break-inside:avoid;border:1px solid #bbb}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Trabajo en equipo</h1>
+    <p class="subtitle">Soporte Técnico · 8.º año · CTP Palmichal · Material de estudio para examen</p>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#concepto">Concepto</a>
+    <a href="#grupo-equipo">Grupo y equipo</a>
+    <a href="#funcionamiento">Funcionamiento</a>
+    <a href="#agiles">Kanban y Scrum</a>
+    <a href="#dinamica">Dinámica</a>
+    <a href="#conflictos">Conflictos</a>
+    <a href="#ventajas">Ventajas y desventajas</a>
+    <a href="#caso">Caso práctico</a>
+    <a href="#repaso">Repaso</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="concepto">
+  <h2>1. ¿Qué es el trabajo en equipo?</h2>
+  <p>El <strong>trabajo en equipo</strong> es una forma de organizarse en la que varias personas colaboran para alcanzar un <strong>objetivo común</strong>. Cada integrante puede tener tareas diferentes, pero todos trabajan para obtener un mismo resultado.</p>
+
+  <div class="idea">
+    <strong>Idea clave:</strong> trabajar en equipo no significa solamente sentarse juntos. Significa <strong>coordinarse, comunicarse, cumplir responsabilidades y ayudarse</strong> para alcanzar una meta.
+  </div>
+
+  <h3>Ejemplo en Soporte Técnico</h3>
+  <p>Cuatro estudiantes deben dar mantenimiento a varias computadoras del laboratorio:</p>
+  <ul>
+    <li>Andrea revisa el estado físico de los equipos.</li>
+    <li>Luis verifica Windows y las actualizaciones.</li>
+    <li>Sofía revisa antivirus y seguridad.</li>
+    <li>Carlos registra los problemas encontrados y las soluciones aplicadas.</li>
+  </ul>
+  <p>Aunque cada persona hace una tarea distinta, todos buscan el mismo resultado: <strong>dejar los equipos funcionando correctamente</strong>.</p>
+</section>
+
+<section id="grupo-equipo">
+  <h2>2. Diferencia entre grupo y equipo</h2>
+  <p>Las palabras <strong>grupo</strong> y <strong>equipo</strong> no significan exactamente lo mismo.</p>
+
+  <table>
+    <tr>
+      <th>Grupo</th>
+      <th>Equipo</th>
+    </tr>
+    <tr>
+      <td>Varias personas están reunidas o pertenecen a un mismo conjunto.</td>
+      <td>Varias personas trabajan de manera coordinada para lograr una meta común.</td>
+    </tr>
+    <tr>
+      <td>Cada persona puede tener un objetivo diferente.</td>
+      <td>Todos conocen el objetivo que deben alcanzar.</td>
+    </tr>
+    <tr>
+      <td>Puede existir poca coordinación.</td>
+      <td>Existe comunicación y coordinación entre los integrantes.</td>
+    </tr>
+    <tr>
+      <td>El resultado depende principalmente del trabajo individual.</td>
+      <td>El resultado depende del aporte de todos.</td>
+    </tr>
+  </table>
+
+  <div class="example">
+    <strong>Grupo:</strong> cinco estudiantes están en la misma mesa, pero cada uno realiza una tarea diferente y no necesitan colaborar entre sí.<br><br>
+    <strong>Equipo:</strong> los cinco deben reparar una computadora. Uno diagnostica, otro revisa conexiones, otro investiga el error, otro documenta y otro comprueba que el equipo funcione.
+  </div>
+
+  <div class="warning">
+    <strong>Para el examen:</strong> un grupo puede convertirse en equipo cuando sus integrantes comparten un objetivo, se organizan, se comunican y asumen responsabilidades.
+  </div>
+</section>
+
+<section id="funcionamiento">
+  <h2>3. ¿Cómo funciona un equipo?</h2>
+  <p>Para que un equipo funcione bien necesita varios elementos. Si alguno falla, el trabajo puede retrasarse o salir mal.</p>
+
+  <ol class="steps">
+    <li><strong>Definir el objetivo:</strong> todos deben saber qué se quiere lograr.</li>
+    <li><strong>Repartir tareas:</strong> cada integrante debe conocer qué le corresponde hacer.</li>
+    <li><strong>Establecer responsabilidades:</strong> cada persona debe cumplir su parte dentro del tiempo acordado.</li>
+    <li><strong>Comunicarse:</strong> los integrantes deben informar avances, dudas, dificultades y cambios.</li>
+    <li><strong>Coordinar:</strong> las tareas deben conectarse entre sí y realizarse en el orden correcto.</li>
+    <li><strong>Revisar resultados:</strong> antes de terminar, el equipo debe comprobar que el trabajo cumple el objetivo.</li>
+  </ol>
+
+  <h3>Ejemplo</h3>
+  <p>Si un equipo debe instalar y configurar una computadora, no sería conveniente que todos hagan lo mismo. Podrían organizarse así:</p>
+  <ul>
+    <li>Una persona instala el sistema.</li>
+    <li>Otra instala controladores.</li>
+    <li>Otra verifica red e Internet.</li>
+    <li>Otra prueba programas y documenta.</li>
+  </ul>
+
+  <p>El trabajo funciona cuando cada tarea se realiza correctamente y se comunica al resto del equipo.</p>
+</section>
+
+<section id="agiles">
+  <h2>4. Metodologías ágiles para el trabajo en equipo</h2>
+  <p>Las <strong>metodologías ágiles</strong> son formas de organizar el trabajo para que un equipo pueda avanzar por partes, revisar constantemente lo que está haciendo y corregir problemas rápidamente.</p>
+
+  <div class="idea">
+    No son programas ni aplicaciones. Son <strong>formas de organizar el trabajo</strong>.
+  </div>
+
+  <h3>4.1 Kanban</h3>
+  <p><strong>Kanban</strong> utiliza un tablero para mostrar visualmente el estado de las tareas.</p>
+
+  <table>
+    <tr>
+      <th>Por hacer</th>
+      <th>En proceso</th>
+      <th>Terminado</th>
+    </tr>
+    <tr>
+      <td>Formatear PC 3</td>
+      <td>Instalar drivers PC 2</td>
+      <td>Actualizar PC 1</td>
+    </tr>
+  </table>
+
+  <p>Cuando una tarea comienza, pasa de <strong>Por hacer</strong> a <strong>En proceso</strong>. Cuando se completa, pasa a <strong>Terminado</strong>.</p>
+
+  <h4>¿Para qué sirve Kanban?</h4>
+  <ul>
+    <li>Permite ver qué tareas faltan.</li>
+    <li>Permite saber qué se está haciendo.</li>
+    <li>Evita olvidar trabajos.</li>
+    <li>Facilita detectar atrasos.</li>
+    <li>Ayuda a repartir mejor el trabajo.</li>
+  </ul>
+
+  <div class="example">
+    <strong>Ejemplo:</strong> si Carlos tiene tres tareas en “En proceso” y Andrea ninguna, el equipo puede darse cuenta de que el trabajo está mal distribuido.
+  </div>
+
+  <h3>4.2 Scrum</h3>
+  <p><strong>Scrum</strong> es una forma de organizar trabajos grandes dividiéndolos en periodos cortos llamados <strong>Sprints</strong>.</p>
+
+  <p>Un <strong>Sprint</strong> es un periodo corto en el que el equipo se compromete a completar una cantidad de trabajo. En proyectos reales suele durar varios días o semanas.</p>
+
+  <h4>Elementos básicos de Scrum</h4>
+  <ul>
+    <li><strong>Product Backlog:</strong> lista general de tareas o necesidades del proyecto.</li>
+    <li><strong>Sprint:</strong> periodo corto de trabajo.</li>
+    <li><strong>Sprint Backlog:</strong> tareas seleccionadas para realizar durante ese Sprint.</li>
+    <li><strong>Reunión diaria:</strong> encuentro corto para saber qué se hizo, qué se hará y qué problemas existen.</li>
+    <li><strong>Revisión:</strong> al final se comprueba qué se logró.</li>
+  </ul>
+
+  <h4>Roles principales en Scrum</h4>
+  <ul>
+    <li><strong>Product Owner:</strong> define prioridades y lo que se necesita lograr.</li>
+    <li><strong>Scrum Master:</strong> ayuda al equipo a seguir Scrum y a resolver obstáculos.</li>
+    <li><strong>Equipo de desarrollo:</strong> realiza las tareas necesarias para construir el resultado.</li>
+  </ul>
+
+  <div class="warning">
+    <strong>Diferencia rápida:</strong><br>
+    <strong>Kanban</strong> organiza tareas mediante un tablero y flujo continuo.<br>
+    <strong>Scrum</strong> organiza el trabajo en periodos cortos llamados Sprints.
+  </div>
+</section>
+
+<section id="dinamica">
+  <h2>5. Dinámica de los equipos</h2>
+  <p>La <strong>dinámica de un equipo</strong> es la manera en que sus integrantes se relacionan, toman decisiones, se comunican, resuelven problemas y trabajan juntos.</p>
+
+  <h3>5.1 Roles</h3>
+  <p>Un <strong>rol</strong> es la función o responsabilidad que una persona cumple dentro del equipo.</p>
+
+  <div class="grid">
+    <div class="mini"><span class="tag">Coordinador</span><br>Organiza tareas, revisa avances y ayuda a mantener el orden.</div>
+    <div class="mini"><span class="tag">Técnico</span><br>Realiza tareas prácticas, diagnósticos o configuraciones.</div>
+    <div class="mini"><span class="tag">Investigador</span><br>Busca información o posibles soluciones.</div>
+    <div class="mini"><span class="tag">Documentador</span><br>Registra procedimientos, resultados y problemas encontrados.</div>
+  </div>
+
+  <p>Los roles pueden cambiar según la actividad. Lo importante es que todos sepan qué deben hacer.</p>
+
+  <h3>5.2 Liderazgo</h3>
+  <p>El <strong>liderazgo</strong> es la capacidad de orientar y ayudar a un equipo para alcanzar sus objetivos.</p>
+
+  <p>Un buen líder:</p>
+  <ul>
+    <li>Escucha a los demás.</li>
+    <li>Organiza sin maltratar.</li>
+    <li>Ayuda a resolver problemas.</li>
+    <li>Distribuye responsabilidades.</li>
+    <li>Da ejemplo con su trabajo.</li>
+    <li>No se apropia del trabajo de los demás.</li>
+  </ul>
+
+  <div class="important">
+    <strong>Liderar no significa mandar.</strong> Un líder efectivo guía, coordina y facilita el trabajo del equipo.
+  </div>
+
+  <h3>5.3 Comunicación</h3>
+  <p>La <strong>comunicación</strong> permite compartir información entre los integrantes.</p>
+
+  <p>Una comunicación adecuada debe ser:</p>
+  <ul>
+    <li>Clara.</li>
+    <li>Respetuosa.</li>
+    <li>Directa.</li>
+    <li>Oportuna.</li>
+    <li>Relacionada con el trabajo.</li>
+  </ul>
+
+  <div class="example">
+    <strong>Mala comunicación:</strong> “Yo pensé que usted lo iba a hacer.”<br><br>
+    <strong>Buena comunicación:</strong> “Yo termino la revisión del antivirus y usted se encarga de documentar los resultados. Revisamos todo a las 10:00.”
+  </div>
+
+  <h3>5.4 Motivación</h3>
+  <p>La <strong>motivación</strong> es lo que impulsa a una persona a participar, esforzarse y continuar trabajando para alcanzar una meta.</p>
+
+  <p>La motivación puede aumentar cuando:</p>
+  <ul>
+    <li>El objetivo está claro.</li>
+    <li>Todos sienten que su trabajo es importante.</li>
+    <li>Existe respeto.</li>
+    <li>Se reconoce el esfuerzo.</li>
+    <li>Las tareas se reparten de forma justa.</li>
+  </ul>
+</section>
+
+<section id="conflictos">
+  <h2>6. Conflictos en el trabajo en equipo</h2>
+  <p>Un <strong>conflicto</strong> es una situación de desacuerdo o problema entre dos o más integrantes.</p>
+
+  <p>Los conflictos no siempre significan que el equipo sea malo. Lo importante es <strong>cómo se resuelven</strong>.</p>
+
+  <h3>6.1 Causas frecuentes</h3>
+  <ul>
+    <li>Falta de comunicación.</li>
+    <li>Tareas mal repartidas.</li>
+    <li>Personas que no cumplen.</li>
+    <li>Falta de respeto.</li>
+    <li>Diferentes opiniones.</li>
+    <li>Falta de liderazgo.</li>
+    <li>Objetivos poco claros.</li>
+  </ul>
+
+  <h3>6.2 Proceso para resolver un conflicto</h3>
+  <ol class="steps">
+    <li><strong>Identificar el problema:</strong> entender qué está ocurriendo realmente.</li>
+    <li><strong>Escuchar a las personas:</strong> conocer las diferentes versiones.</li>
+    <li><strong>Buscar la causa:</strong> determinar por qué ocurrió el problema.</li>
+    <li><strong>Proponer soluciones:</strong> pensar en alternativas posibles.</li>
+    <li><strong>Elegir un acuerdo:</strong> decidir qué solución aplicará el equipo.</li>
+    <li><strong>Comprobar el resultado:</strong> revisar si el problema realmente se resolvió.</li>
+  </ol>
+
+  <h3>6.3 Consecuencias de un conflicto mal manejado</h3>
+  <ul>
+    <li>Retrasos.</li>
+    <li>Errores.</li>
+    <li>Mal ambiente de trabajo.</li>
+    <li>Falta de confianza.</li>
+    <li>Baja motivación.</li>
+    <li>Trabajo incompleto.</li>
+    <li>Incumplimiento del objetivo.</li>
+  </ul>
+
+  <div class="warning">
+    Un conflicto no se resuelve ignorándolo. Si el equipo no habla sobre el problema, normalmente empeora.
+  </div>
+</section>
+
+<section id="ventajas">
+  <h2>7. Ventajas y desventajas del trabajo en equipo</h2>
+
+  <table>
+    <tr>
+      <th>Ventajas</th>
+      <th>Desventajas</th>
+    </tr>
+    <tr>
+      <td>Permite dividir tareas.</td>
+      <td>Puede haber conflictos.</td>
+    </tr>
+    <tr>
+      <td>Se combinan conocimientos diferentes.</td>
+      <td>Algunas personas pueden trabajar menos que otras.</td>
+    </tr>
+    <tr>
+      <td>Se pueden encontrar más soluciones.</td>
+      <td>Una mala comunicación puede provocar errores.</td>
+    </tr>
+    <tr>
+      <td>Puede reducir el tiempo de trabajo.</td>
+      <td>Tomar decisiones puede tardar más.</td>
+    </tr>
+    <tr>
+      <td>Los integrantes pueden apoyarse.</td>
+      <td>Una mala organización puede retrasar todo el proyecto.</td>
+    </tr>
+    <tr>
+      <td>Permite aprender de otros.</td>
+      <td>Si una tarea depende de otra persona y no la cumple, puede afectar a todos.</td>
+    </tr>
+  </table>
+
+  <div class="idea">
+    <strong>Importante:</strong> una desventaja no significa que trabajar en equipo sea malo. Significa que el equipo necesita organización para evitar esos problemas.
+  </div>
+</section>
+
+<section>
+  <h2>8. Cumplimiento de los resultados de aprendizaje</h2>
+  <p>Un equipo no trabaja solamente para “terminar algo”. Debe comprobar que alcanzó los <strong>resultados de aprendizaje trazados</strong>.</p>
+
+  <p>Esto significa verificar si al final de la actividad los estudiantes realmente lograron lo que se esperaba aprender o realizar.</p>
+
+  <h3>Ejemplo</h3>
+  <p>Si el resultado esperado es:</p>
+  <div class="idea">
+    “El estudiante aplica correctamente medidas de mantenimiento preventivo en una computadora”.
+  </div>
+
+  <p>No basta con decir “terminamos”. El equipo debe comprobar:</p>
+  <ul>
+    <li>¿Se realizó el procedimiento correctamente?</li>
+    <li>¿Todos entienden qué se hizo?</li>
+    <li>¿El equipo funciona?</li>
+    <li>¿Se documentó el procedimiento?</li>
+    <li>¿Se cumplió el objetivo de aprendizaje?</li>
+  </ul>
+</section>
+
+<section id="caso">
+  <h2>9. Caso práctico para comprender todo el tema</h2>
+
+  <p>Cuatro estudiantes deben realizar mantenimiento a cinco computadoras.</p>
+
+  <p><strong>Andrea</strong> revisa hardware.<br>
+  <strong>Luis</strong> revisa Windows.<br>
+  <strong>Carlos</strong> instala actualizaciones.<br>
+  <strong>Sofía</strong> documenta el trabajo.</p>
+
+  <p>Luis encuentra un problema, pero no se lo comunica al equipo. Carlos espera que Luis termine para poder actualizar una computadora. Sofía no sabe qué información debe registrar. Andrea termina temprano, pero no ayuda a los demás.</p>
+
+  <h3>¿Qué problemas existen?</h3>
+  <ul>
+    <li>Falta de comunicación.</li>
+    <li>Mala coordinación.</li>
+    <li>No se informaron los bloqueos.</li>
+    <li>No se aprovecharon correctamente los recursos del equipo.</li>
+    <li>Los roles existían, pero no funcionaron de manera coordinada.</li>
+  </ul>
+
+  <h3>¿Cómo mejorarlo?</h3>
+  <ul>
+    <li>Realizar una reunión corta antes de empezar.</li>
+    <li>Definir claramente qué debe hacer cada persona.</li>
+    <li>Usar un tablero Kanban.</li>
+    <li>Comunicar inmediatamente los problemas.</li>
+    <li>Ayudar a otros integrantes cuando una tarea propia termina.</li>
+    <li>Revisar juntos el trabajo antes de entregarlo.</li>
+  </ul>
+</section>
+
+<section id="repaso">
+  <h2>10. Resumen para estudiar</h2>
+
+  <details open>
+    <summary>¿Qué es trabajo en equipo?</summary>
+    <p>Es la colaboración organizada de varias personas para lograr un objetivo común.</p>
+  </details>
+
+  <details>
+    <summary>¿Cuál es la diferencia entre grupo y equipo?</summary>
+    <p>Un grupo reúne personas. Un equipo, además de reunirlas, las coordina alrededor de un objetivo común.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es Kanban?</summary>
+    <p>Una forma de organizar visualmente las tareas mediante columnas como Por hacer, En proceso y Terminado.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es Scrum?</summary>
+    <p>Una forma ágil de organizar proyectos dividiendo el trabajo en periodos cortos llamados Sprints.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es un rol?</summary>
+    <p>Es la función o responsabilidad que una persona cumple dentro del equipo.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es liderazgo?</summary>
+    <p>Es la capacidad de orientar, coordinar y ayudar al equipo para alcanzar sus objetivos.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es comunicación?</summary>
+    <p>Es el intercambio de información entre los integrantes para coordinar tareas, resolver dudas y comunicar problemas.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es motivación?</summary>
+    <p>Es el impulso que lleva a una persona a participar y esforzarse para alcanzar una meta.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué es un conflicto?</summary>
+    <p>Es un desacuerdo o problema entre integrantes del equipo que debe ser identificado y resuelto.</p>
+  </details>
+
+  <details>
+    <summary>¿Qué ocurre si un equipo no se comunica?</summary>
+    <p>Pueden aparecer errores, tareas duplicadas, retrasos, confusión y conflictos.</p>
+  </details>
+
+  <h3>Preguntas de práctica para el examen</h3>
+
+  <div class="question"><strong>1.</strong> Explique con sus propias palabras qué es trabajo en equipo.</div>
+  <div class="question"><strong>2.</strong> Indique dos diferencias entre grupo y equipo.</div>
+  <div class="question"><strong>3.</strong> Explique cómo funciona un tablero Kanban.</div>
+  <div class="question"><strong>4.</strong> ¿Qué es un Sprint en Scrum?</div>
+  <div class="question"><strong>5.</strong> Mencione tres características de un buen líder.</div>
+  <div class="question"><strong>6.</strong> ¿Por qué la comunicación es importante en un equipo?</div>
+  <div class="question"><strong>7.</strong> Mencione dos causas de conflicto.</div>
+  <div class="question"><strong>8.</strong> Explique dos consecuencias de un conflicto mal manejado.</div>
+  <div class="question"><strong>9.</strong> Mencione tres ventajas y tres desventajas del trabajo en equipo.</div>
+  <div class="question"><strong>10.</strong> Explique por qué cumplir una tarea no siempre significa que se alcanzó el resultado de aprendizaje.</div>
+
+  <div class="important">
+    <strong>Lo más importante para el examen:</strong> no memorice palabras sin entenderlas. Debe poder explicar cada concepto con un ejemplo de una situación real de trabajo o de soporte técnico.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="padding:24px 16px 40px;">
+    <p class="footer-note">Material de estudio · Trabajo en equipo · Soporte Técnico · 8.º año · CTP Palmichal</p>
+  </div>
+</footer>
+
+</body>
+</html>
